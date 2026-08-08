@@ -17,7 +17,7 @@ export const About: React.FC = () => {
   };
 
   return (
-    <section id="about" className="py-24 px-6 sm:px-10 lg:px-16 relative z-10 max-w-7xl mx-auto w-full">
+    <section id="about" className="py-24 px-6 sm:px-10 lg:px-16 relative z-10 w-full border-b border-white/5">
       {/* Section Header */}
       <div className="mb-12 pb-6 border-b border-white/10">
         <div className="inline-flex items-center gap-2 text-xs font-mono text-[#a1a1aa] uppercase tracking-wider mb-2">

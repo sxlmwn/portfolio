@@ -13,7 +13,7 @@ export const TechStack: React.FC = () => {
     : TECH_SKILLS.filter(s => s.category === selectedCategory);
 
   return (
-    <section id="stack" className="py-24 px-6 sm:px-10 lg:px-16 relative z-10 max-w-7xl mx-auto w-full">
+    <section id="stack" className="py-24 px-6 sm:px-10 lg:px-16 relative z-10 w-full border-b border-white/5">
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-6 border-b border-white/10">
         <div>
