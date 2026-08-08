@@ -70,7 +70,7 @@ export const About: React.FC = () => {
         {/* Right Column: 3 Deep-Focus Self-Study Tracks (Spans 7 cols) */}
         <div className="lg:col-span-7 flex flex-col gap-5">
           {/* Track Selector Tabs */}
-          <div className="grid grid-cols-3 gap-2 p-1.5 rounded-2xl bg-[#111116] border border-white/10">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 p-1.5 rounded-2xl bg-[#111116] border border-white/10">
             {LEARNING_TRACKS.map((track) => {
               const isSelected = activeTrackId === track.id;
 

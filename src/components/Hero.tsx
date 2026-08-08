@@ -29,7 +29,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
       <div className="relative z-10 max-w-7xl w-full mx-auto flex items-center justify-between">
         <div className="inline-flex items-center gap-3 py-1 text-xs font-mono text-[#a1a1aa] tracking-wider">
           <span className="w-2 h-2 rounded-full bg-white pulse-dot-mono inline-block" />
-          <span className="font-semibold text-white tracking-widest uppercase">Sal</span>
+          <span className="font-semibold text-white tracking-wider lowercase">sal</span>
           <span className="text-[#52525b]">/</span>
           <span className="text-[#a1a1aa] font-medium hidden sm:inline">@{PERSONAL_INFO.handle}</span>
           <span className="text-[#52525b] hidden sm:inline">&bull;</span>
