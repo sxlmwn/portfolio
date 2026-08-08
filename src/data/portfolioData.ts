@@ -51,7 +51,6 @@ export const PERSONAL_INFO = {
   headline: "I build with code, curiosity, and a lot of debugging.",
   subtext: "Engineering high-throughput C++ engines, autonomous AI assistants, and resilient distributed architectures. Driven by first-principles problem solving.",
   location: "Karachi, Pakistan (PKT / UTC+5)",
-  email: "salmanyounus13@gmail.com",
   github: "https://github.com/sxlmwn",
   linkedin: "https://linkedin.com/in/sxlmwn",
   status: "Available for Software Engineering Internships & Opportunities",
@@ -307,9 +306,9 @@ export async function generateBaymaxResponse(prompt: string, context: ChatMessag
     ],
     keyFeatures: [
       "Folioblox layout structure with oversized bold statement heading and right-side integrated portrait",
-      "Tailored dual-tone lighting system (Teal #2dd4bf & Coral #f43f5e) echoing the side-profile photograph",
+      "Tailored luxury monochrome lighting system echoing the side-profile photograph",
       "Interactive terminal sandbox with real-time C++ order book matching engine simulation",
-      "One-click copy email with confetti celebration and live Karachi (UTC+5) clock",
+      "Direct message transmission form and live Karachi (UTC+5) clock",
       "Zero heavy unnecessary runtime animations for instant, crisp page loading"
     ],
     architectureNotes: [
@@ -320,22 +319,22 @@ export async function generateBaymaxResponse(prompt: string, context: ChatMessag
     codeSnippet: {
       language: "typescript",
       filename: "Hero.tsx",
-      code: `// Folioblox-style editorial Hero layout with dual-tone lighting
+      code: `// Folioblox-style editorial Hero layout with monochrome typography
 export const Hero: React.FC = () => {
     return (
         <section className="hero-grid">
             <div className="hero-left">
-                <h1>I build with <span className="text-gradient-teal">code</span>, curiosity, and a lot of <span className="text-gradient-coral">debugging</span>.</h1>
+                <h1>Salman Younus</h1>
                 <p>Engineering high-throughput C++ engines and local AI assistants.</p>
             </div>
             <div className="hero-portrait-frame">
-                <img src="/hero-portrait.webp" alt="Salman Younus" className="hero-portrait-img" />
+                <img src="/hero-bw.webp" alt="Salman Younus" className="hero-portrait-img" />
             </div>
         </section>
     );
 };`
     },
-    githubUrl: "https://github.com/sxlmwn/sxlmwn.github.io",
+    githubUrl: "https://github.com/sxlmwn/portfolio",
     liveUrl: "https://sxlmwn.github.io",
     accentColor: "dual",
     featured: true
@@ -427,10 +426,10 @@ export const LEARNING_TRACKS: LearningTrack[] = [
 ];
 
 export const TERMINAL_COMMANDS: Record<string, string> = {
-  "help": "Available commands: \n  - bio          : Display Salman's background\n  - skills       : List technical stack & languages\n  - projects     : List key engineered systems\n  - run altradar : Simulate C++ order book matching engine\n  - learning     : View active self-study tracks\n  - contact      : Show direct links & email\n  - clear        : Clear terminal output",
+  "help": "Available commands: \n  - bio          : Display Salman's background\n  - skills       : List technical stack & languages\n  - projects     : List key engineered systems\n  - run altradar : Simulate C++ order book matching engine\n  - learning     : View active self-study tracks\n  - contact      : Show direct links & channels\n  - clear        : Clear terminal output",
   "bio": "Salman Younus (sxlmwn)\nSoftware Engineering Student & Systems Builder\nPassionate about low-latency systems, AI engineering, and robust software architecture.",
   "skills": "LANGUAGES:  C++20, Python, TypeScript, Java, SQL, Bash\nFRAMEWORKS: React 19, Node.js, Vite, Discord.js, whatsapp-web.js\nSYSTEMS:    Docker, Linux, Git, Ollama, Groq LPU, CMake, GitHub Actions",
   "projects": "1. AltRadar                     [C++20 | Terminal Crypto Trading Simulator]\n2. Football Transfer Simulator  [C++ | Graph & Priority Queue Market Engine]\n3. WhatsApp AI Bot              [Node.js | Ollama Mistral Local Inference]\n4. Baymax Discord Bot           [TypeScript | Groq LPU Fast LLM Companion]\n5. Portfolio 2.0                [React 19 | Editorial Dark Visual Redesign]",
   "learning": "CURRENT SELF-STUDY TRACKS:\n  [1] AI Engineering   - Local LLM inference, Agentic pipelines, Embeddings\n  [2] Cloud & DevOps   - Docker containerization, CI/CD Actions, Linux admin\n  [3] Cybersecurity    - OSINT tooling, Network security, Secure C++ practices",
-  "contact": "Email:    salmanyounus13@gmail.com\nGitHub:   https://github.com/sxlmwn\nLinkedIn: https://linkedin.com/in/sxlmwn\nLocation: Karachi, Pakistan (PKT / UTC+5)"
+  "contact": "GitHub:   https://github.com/sxlmwn\nLinkedIn: https://linkedin.com/in/sxlmwn\nLocation: Karachi, Pakistan (PKT / UTC+5)\nDirect transmission form available on the website."
 };

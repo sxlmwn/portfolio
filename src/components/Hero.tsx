@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowDown, ArrowUpRight, Terminal } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Terminal, MessageSquare } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { GitHubIcon, LinkedInIcon } from './Icons';
 
@@ -100,7 +100,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
           <span className="text-[#71717a] hidden sm:inline">Low-Latency Systems & AI</span>
         </div>
 
-        {/* Minimal Social Links & Quick Actions */}
+        {/* Minimal Social Links & Quick Channels */}
         <div className="flex items-center gap-3">
           <a
             href={PERSONAL_INFO.github}
@@ -125,11 +125,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
           </a>
 
           <a
-            href={`mailto:${PERSONAL_INFO.email}`}
+            href="#contact"
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-[#a1a1aa] hover:text-white transition-all"
-            aria-label="Direct Email"
+            aria-label="Contact Section"
           >
-            <span>Email</span>
+            <MessageSquare className="w-3.5 h-3.5" />
+            <span>Message</span>
           </a>
         </div>
       </div>

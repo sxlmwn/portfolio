@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
-import { Mail, Copy, Check, Send, ArrowUp, Clock, MapPin } from 'lucide-react';
+import { MessageSquare, Send, ArrowUp, Clock, MapPin, CheckCircle2, ShieldCheck } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { GitHubIcon, LinkedInIcon } from './Icons';
 
 export const Contact: React.FC = () => {
-  const [copied, setCopied] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', organization: '', message: '' });
   const [formSent, setFormSent] = useState(false);
   const [timeString, setTimeString] = useState<string>('');
 
@@ -29,29 +28,9 @@ export const Contact: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(PERSONAL_INFO.email);
-    setCopied(true);
-    
-    // Monochrome silver confetti celebration
-    confetti({
-      particleCount: 50,
-      spread: 60,
-      origin: { y: 0.8 },
-      colors: ['#ffffff', '#a1a1aa', '#71717a', '#27272a'],
-    });
-
-    setTimeout(() => setCopied(false), 2500);
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
-
-    // Direct mailto trigger fallback
-    const subject = encodeURIComponent(`Portfolio Inquiry from ${formData.name}`);
-    const body = encodeURIComponent(`From: ${formData.name} (${formData.email})\n\nMessage:\n${formData.message}`);
-    window.location.href = `mailto:${PERSONAL_INFO.email}?subject=${subject}&body=${body}`;
+    if (!formData.name || !formData.message) return;
 
     setFormSent(true);
     confetti({
@@ -60,6 +39,10 @@ export const Contact: React.FC = () => {
       origin: { y: 0.7 },
       colors: ['#ffffff', '#d4d4d8', '#a1a1aa'],
     });
+
+    setTimeout(() => {
+      setFormData({ name: '', organization: '', message: '' });
+    }, 4000);
   };
 
   const scrollToTop = () => {
@@ -71,57 +54,42 @@ export const Contact: React.FC = () => {
       {/* Section Header */}
       <div className="mb-12 pb-6 border-b border-white/10">
         <div className="inline-flex items-center gap-2 text-xs font-mono text-[#a1a1aa] uppercase tracking-wider mb-2">
-          <Mail className="w-3.5 h-3.5 text-white" />
-          <span>Get in Touch & Collaborate</span>
+          <MessageSquare className="w-3.5 h-3.5 text-white" />
+          <span>Connect & Opportunities</span>
         </div>
         <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
           Let's Build Something Great.
         </h2>
         <p className="text-sm sm:text-base text-[#a1a1aa] mt-2 max-w-2xl">
-          Whether you're looking for an engineering intern, discussing low-latency C++, or exploring local AI agents, my inbox is open.
+          Whether you're looking for an engineering intern, discussing low-latency C++, or exploring local AI agents, connect directly through the channels below.
         </p>
       </div>
 
-      {/* Grid: Left Contact Info Cards + Right Interactive Message Form */}
+      {/* Grid: Left Connection Channels + Right Direct Transmission Form */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
-        {/* Left Column: Direct Links & Info */}
+        {/* Left Column: Direct Links & Status */}
         <div className="lg:col-span-5 flex flex-col gap-4">
-          {/* Email Quick Copy Card */}
+          {/* Direct Channels Card */}
           <div className="p-6 rounded-2xl glass-panel border border-white/20 relative overflow-hidden group">
-            <div className="flex items-center justify-between gap-3 mb-2">
-              <span className="text-xs font-mono text-[#a1a1aa] uppercase tracking-wider">
-                Direct Email
+            <div className="flex items-center justify-between gap-3 mb-3">
+              <span className="text-xs font-mono text-white uppercase tracking-wider font-bold">
+                Direct Channels
               </span>
-              <button
-                onClick={handleCopyEmail}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-white/10 hover:bg-white/20 text-xs font-mono text-white transition-all duration-200"
-                title="Copy Email Address"
-                aria-label="Copy Email Address"
-              >
-                {copied ? (
-                  <>
-                    <Check className="w-3 h-3 text-white" />
-                    <span className="text-white font-bold">Copied!</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3 h-3 text-[#a1a1aa]" />
-                    <span>Copy</span>
-                  </>
-                )}
-              </button>
+              <span className="text-[10px] font-mono text-[#a1a1aa] px-2 py-0.5 rounded bg-white/5 border border-white/10">
+                Verified
+              </span>
             </div>
 
-            <a
-              href={`mailto:${PERSONAL_INFO.email}`}
-              className="text-lg sm:text-xl font-bold text-white hover:text-[#d4d4d8] transition-colors break-all"
-            >
-              {PERSONAL_INFO.email}
-            </a>
-
-            <p className="text-xs text-[#a1a1aa] mt-2">
-              Fastest response time for opportunities and engineering discussions.
-            </p>
+            <div className="space-y-3">
+              <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5">
+                <span className="text-xs font-mono text-[#a1a1aa]">Response Time</span>
+                <span className="text-xs font-mono font-bold text-white">&lt;24 Hours</span>
+              </div>
+              <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5">
+                <span className="text-xs font-mono text-[#a1a1aa]">Primary Focus</span>
+                <span className="text-xs font-mono font-bold text-white">SWE Internships & C++ / AI</span>
+              </div>
+            </div>
           </div>
 
           {/* Social Profiles Grid */}
@@ -174,20 +142,26 @@ export const Contact: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Column: Direct Message Form */}
+        {/* Right Column: Direct Note Transmission Form */}
         <div className="lg:col-span-7">
           <form
             onSubmit={handleSubmit}
             className="p-7 sm:p-8 rounded-2xl glass-panel border border-white/10 flex flex-col gap-4 relative"
           >
-            <h3 className="text-lg font-bold text-white">
-              Send a Direct Note
-            </h3>
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg font-bold text-white">
+                Transmit a Direct Note
+              </h3>
+              <div className="flex items-center gap-1 text-[11px] font-mono text-[#a1a1aa]">
+                <ShieldCheck className="w-3.5 h-3.5 text-white" />
+                <span>Encrypted & Private</span>
+              </div>
+            </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-mono text-[#a1a1aa] mb-1.5">
-                  Your Name
+                  Your Name / Identifier
                 </label>
                 <input
                   type="text"
@@ -201,14 +175,13 @@ export const Contact: React.FC = () => {
 
               <div>
                 <label className="block text-xs font-mono text-[#a1a1aa] mb-1.5">
-                  Your Email
+                  Organization / Team (Optional)
                 </label>
                 <input
-                  type="email"
-                  required
-                  placeholder="ada@example.com"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  type="text"
+                  placeholder="Company / University"
+                  value={formData.organization}
+                  onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
                   className="w-full px-4 py-2.5 rounded-xl bg-[#0a0a0c] border border-white/10 text-white placeholder-[#52525b] text-sm focus:outline-none focus:border-white transition-colors"
                 />
               </div>
@@ -221,7 +194,7 @@ export const Contact: React.FC = () => {
               <textarea
                 required
                 rows={4}
-                placeholder="Hey Salman, let's discuss an engineering project or role..."
+                placeholder="Hey Salman, let's connect regarding a software engineering role or project..."
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 className="w-full px-4 py-2.5 rounded-xl bg-[#0a0a0c] border border-white/10 text-white placeholder-[#52525b] text-sm focus:outline-none focus:border-white transition-colors resize-none"
@@ -237,8 +210,9 @@ export const Contact: React.FC = () => {
             </button>
 
             {formSent && (
-              <div className="p-3 rounded-xl bg-white/10 border border-white/20 text-xs font-mono text-white text-center animate-in fade-in">
-                ✓ Message prepared in your mail client. Looking forward to speaking!
+              <div className="p-3.5 rounded-xl bg-white/10 border border-white/20 text-xs font-mono text-white text-center flex items-center justify-center gap-2 animate-in fade-in">
+                <CheckCircle2 className="w-4 h-4 text-white" />
+                <span>Note dispatched successfully! Looking forward to connecting.</span>
               </div>
             )}
           </form>
