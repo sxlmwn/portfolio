@@ -14,7 +14,7 @@ export const Projects: React.FC = () => {
     : PROJECTS.filter((p) => p.category === filterCategory);
 
   return (
-    <section id="projects" className="py-24 px-6 sm:px-10 lg:px-16 relative z-10 max-w-7xl mx-auto w-full">
+    <section id="projects" className="py-24 px-5 sm:px-8 lg:px-12 relative z-10 max-w-7xl mx-auto w-full">
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-6 border-b border-white/10">
         <div>

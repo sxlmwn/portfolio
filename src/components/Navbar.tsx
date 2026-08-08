@@ -45,9 +45,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
   return (
     <>
       {/* Floating Minimalist Top Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 sm:px-8 pt-4 pb-2 transition-all duration-300 pointer-events-none">
+      <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-5 sm:px-8 lg:px-12 pt-4 pb-2 transition-all duration-300 pointer-events-none">
         <nav
-          className={`pointer-events-auto flex items-center justify-between gap-4 md:gap-8 px-5 py-2.5 rounded-full transition-all duration-300 max-w-7xl w-full ${
+          className={`pointer-events-auto flex items-center justify-between gap-4 md:gap-8 px-4 sm:px-6 py-2.5 rounded-full transition-all duration-300 max-w-7xl w-full ${
             scrolled
               ? 'bg-[#111116]/85 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/80'
               : 'bg-transparent border border-transparent'

@@ -50,7 +50,7 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <footer id="contact" className="pt-24 pb-12 px-6 sm:px-10 lg:px-16 relative z-10 max-w-7xl mx-auto w-full">
+    <footer id="contact" className="pt-24 pb-12 px-5 sm:px-8 lg:px-12 relative z-10 max-w-7xl mx-auto w-full">
       {/* Section Header */}
       <div className="mb-12 pb-6 border-b border-white/10">
         <div className="inline-flex items-center gap-2 text-xs font-mono text-[#a1a1aa] uppercase tracking-wider mb-2">
