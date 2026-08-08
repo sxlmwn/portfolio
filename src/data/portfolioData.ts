@@ -50,7 +50,7 @@ export const PERSONAL_INFO = {
   title: "Software Engineering Student & Systems Builder",
   headline: "I build with code, curiosity, and a lot of debugging.",
   subtext: "Engineering high-throughput C++ engines, autonomous AI assistants, and resilient distributed architectures. Driven by first-principles problem solving.",
-  location: "Karachi, Pakistan (PKT / UTC+5)",
+  location: "Islamabad, Pakistan (PKT / UTC+5)",
   github: "https://github.com/sxlmwn",
   linkedin: "https://linkedin.com/in/sxlmwn",
   status: "Available for Software Engineering Internships & Opportunities",
@@ -74,7 +74,10 @@ export const TECH_SKILLS: TechSkill[] = [
   { name: "Docker", category: "Systems & AI", level: "Proficient", experience: "Containerization, dev environments", description: "Dockerfile optimization, multi-stage builds, container isolation, volume mounts." },
   { name: "Git & GitHub Actions", category: "Web & Tools", level: "Advanced", experience: "CI/CD pipelines, version control", description: "Automated test suites, GitHub Pages deployment workflows, semantic branching." },
   { name: "Ollama & Local LLMs", category: "Systems & AI", level: "Proficient", experience: "Mistral, Llama local inference", description: "Local model hosting, prompt engineering, context sliding windows, zero-cloud pipelines." },
-  { name: "Groq API & LPU", category: "Systems & AI", level: "Proficient", experience: "Ultra-fast streaming AI completions", description: "Hardware-accelerated token streaming, conversational memory, structured tool outputs." }
+  { name: "Groq API & LPU", category: "Systems & AI", level: "Proficient", experience: "Ultra-fast streaming AI completions", description: "Hardware-accelerated token streaming, conversational memory, structured tool outputs." },
+  { name: "Nmap", category: "Systems & AI", level: "Proficient", experience: "Network reconnaissance, port scanning, service enumeration", description: "Network mapping, host discovery, NSE vulnerability scripts, banner grabbing, and port scanning." },
+  { name: "Wireshark", category: "Systems & AI", level: "Proficient", experience: "Packet analysis, protocol inspection, traffic capture", description: "Deep packet inspection, TCP stream reconstruction, handshake debugging, and network protocol analysis." },
+  { name: "Burp Suite", category: "Systems & AI", level: "Intermediate", experience: "Web vulnerability discovery, proxy traffic interception", description: "HTTP/S proxy interception, request tampering, endpoint fuzzing, and web security vulnerability discovery." }
 ];
 
 export const PROJECTS: Project[] = [
@@ -308,7 +311,7 @@ export async function generateBaymaxResponse(prompt: string, context: ChatMessag
       "Folioblox layout structure with oversized bold statement heading and right-side integrated portrait",
       "Tailored luxury monochrome lighting system echoing the side-profile photograph",
       "Interactive terminal sandbox with real-time C++ order book matching engine simulation",
-      "Direct message transmission form and live Karachi (UTC+5) clock",
+      "Direct message transmission form and live Islamabad (UTC+5) clock",
       "Zero heavy unnecessary runtime animations for instant, crisp page loading"
     ],
     architectureNotes: [
@@ -399,11 +402,11 @@ export const LEARNING_TRACKS: LearningTrack[] = [
   {
     id: "cybersecurity",
     title: "Cybersecurity & Systems",
-    tagline: "Network Security, OSINT & Secure Coding Practices",
+    tagline: "Network Security, OSINT & Pentesting Tooling",
     iconName: "Shield",
     color: "dual",
     progress: 75,
-    description: "Understanding software from an adversarial perspective to build resilient, hardened systems. Exploring network protocols, intelligence gathering (OSINT), and vulnerability mitigation.",
+    description: "Understanding software and networks from an adversarial perspective. Exploring network protocols, intelligence gathering (OSINT), and vulnerability discovery with practical security tooling.",
     topics: [
       {
         name: "OSINT & Intelligence Tooling",
@@ -416,20 +419,20 @@ export const LEARNING_TRACKS: LearningTrack[] = [
         description: "Analyzing TCP/IP handshakes, DNS inspection, Wireshark packet captures, and reverse proxy TLS termination."
       },
       {
-        name: "Secure Software Design & Cryptography",
+        name: "Penetration Testing & Kali Toolset",
         status: "Deep Diving",
-        description: "Memory safety mitigations in C++, cryptographic hash functions, symmetric/asymmetric encryption, and input sanitization."
+        description: "Practical penetration testing workflows utilizing the Kali Linux toolset (Nmap, Wireshark, Burp Suite) for port reconnaissance, endpoint fuzzing, and vulnerability discovery."
       }
     ],
-    practicalApplication: "Hardening C++ memory buffers against overflow vulnerabilities and creating privacy-first bot architectures."
+    practicalApplication: "Employing Kali Linux security tools for network scanning, vulnerability discovery, and building resilient, privacy-first systems."
   }
 ];
 
 export const TERMINAL_COMMANDS: Record<string, string> = {
-  "help": "Available commands: \n  - bio          : Display Salman's background\n  - skills       : List technical stack & languages\n  - projects     : List key engineered systems\n  - run altradar : Simulate C++ order book matching engine\n  - learning     : View active self-study tracks\n  - contact      : Show direct links & channels\n  - clear        : Clear terminal output",
-  "bio": "Salman Younus (sxlmwn)\nSoftware Engineering Student & Systems Builder\nPassionate about low-latency systems, AI engineering, and robust software architecture.",
-  "skills": "LANGUAGES:  C++20, Python, TypeScript, Java, SQL, Bash\nFRAMEWORKS: React 19, Node.js, Vite, Discord.js, whatsapp-web.js\nSYSTEMS:    Docker, Linux, Git, Ollama, Groq LPU, CMake, GitHub Actions",
+  "help": "Available commands: \n  - bio      : Display Salman's background\n  - skills   : List technical stack & languages\n  - projects : List key engineered systems\n  - learning : View active self-study tracks\n  - contact  : Show direct links & channels\n  - clear    : Clear terminal output",
+  "bio": "Salman Younus (Sal)\nSoftware Engineering Student & Systems Builder\nPassionate about low-latency systems, AI engineering, and robust software architecture.",
+  "skills": "LANGUAGES:  C++20, Python, TypeScript, Java, SQL, Bash\nFRAMEWORKS: React 19, Node.js, Vite, Discord.js, whatsapp-web.js\nSYSTEMS:    Docker, Linux, Git, Ollama, Groq LPU, CMake, Nmap, Wireshark, Burp Suite, GitHub Actions",
   "projects": "1. AltRadar                     [C++20 | Terminal Crypto Trading Simulator]\n2. Football Transfer Simulator  [C++ | Graph & Priority Queue Market Engine]\n3. WhatsApp AI Bot              [Node.js | Ollama Mistral Local Inference]\n4. Baymax Discord Bot           [TypeScript | Groq LPU Fast LLM Companion]\n5. Portfolio 2.0                [React 19 | Editorial Dark Visual Redesign]",
-  "learning": "CURRENT SELF-STUDY TRACKS:\n  [1] AI Engineering   - Local LLM inference, Agentic pipelines, Embeddings\n  [2] Cloud & DevOps   - Docker containerization, CI/CD Actions, Linux admin\n  [3] Cybersecurity    - OSINT tooling, Network security, Secure C++ practices",
-  "contact": "GitHub:   https://github.com/sxlmwn\nLinkedIn: https://linkedin.com/in/sxlmwn\nLocation: Karachi, Pakistan (PKT / UTC+5)\nDirect transmission form available on the website."
+  "learning": "CURRENT SELF-STUDY TRACKS:\n  [1] AI Engineering   - Local LLM inference, Agentic pipelines, Embeddings\n  [2] Cloud & DevOps   - Docker containerization, CI/CD Actions, Linux admin\n  [3] Cybersecurity    - OSINT tooling, Network security, Kali Linux tooling & pentesting",
+  "contact": "GitHub:   https://github.com/sxlmwn\nLinkedIn: https://linkedin.com/in/sxlmwn\nLocation: Islamabad, Pakistan (PKT / UTC+5)\nDirect transmission form available on the website."
 };

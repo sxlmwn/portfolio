@@ -50,7 +50,7 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <footer id="contact" className="pt-24 pb-12 px-6 sm:px-10 lg:px-16 relative z-10 w-full">
+    <footer id="contact" className="pt-24 pb-12 px-6 sm:px-10 lg:px-16 relative z-10 w-full overflow-x-hidden">
       {/* Section Header */}
       <div className="mb-12 pb-6 border-b border-white/10">
         <div className="inline-flex items-center gap-2 text-xs font-mono text-[#a1a1aa] uppercase tracking-wider mb-2">
@@ -66,7 +66,7 @@ export const Contact: React.FC = () => {
       </div>
 
       {/* Grid: Left Connection Channels + Right Direct Transmission Form */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 overflow-x-hidden">
         {/* Left Column: Direct Links & Status */}
         <div className="lg:col-span-5 flex flex-col gap-4">
           {/* Direct Channels Card */}
@@ -133,7 +133,7 @@ export const Contact: React.FC = () => {
           <div className="p-4 rounded-xl glass-panel-subtle border border-white/5 flex items-center justify-between text-xs font-mono text-[#a1a1aa]">
             <div className="flex items-center gap-2">
               <MapPin className="w-3.5 h-3.5 text-white" />
-              <span>Karachi, PK (UTC+5)</span>
+              <span>Islamabad, PK (UTC+5)</span>
             </div>
             <div className="flex items-center gap-1.5 text-white">
               <Clock className="w-3.5 h-3.5 text-white" />
@@ -143,10 +143,10 @@ export const Contact: React.FC = () => {
         </div>
 
         {/* Right Column: Direct Note Transmission Form */}
-        <div className="lg:col-span-7">
+        <div className="lg:col-span-7 w-full min-w-0">
           <form
             onSubmit={handleSubmit}
-            className="p-7 sm:p-8 rounded-2xl glass-panel border border-white/10 flex flex-col gap-4 relative"
+            className="w-full min-w-0 p-7 sm:p-8 rounded-2xl glass-panel border border-white/10 flex flex-col gap-4 relative"
           >
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-bold text-white">
@@ -158,8 +158,8 @@ export const Contact: React.FC = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full min-w-0">
+              <div className="w-full min-w-0">
                 <label className="block text-xs font-mono text-[#a1a1aa] mb-1.5">
                   Your Name / Identifier
                 </label>
@@ -169,11 +169,11 @@ export const Contact: React.FC = () => {
                   placeholder="Ada Lovelace"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl bg-[#0a0a0c] border border-white/10 text-white placeholder-[#52525b] text-sm focus:outline-none focus:border-white transition-colors"
+                  className="w-full min-w-0 px-4 py-2.5 rounded-xl bg-[#0a0a0c] border border-white/10 text-white placeholder-[#52525b] text-sm focus:outline-none focus:border-white transition-colors"
                 />
               </div>
 
-              <div>
+              <div className="w-full min-w-0">
                 <label className="block text-xs font-mono text-[#a1a1aa] mb-1.5">
                   Organization / Team (Optional)
                 </label>
@@ -182,12 +182,12 @@ export const Contact: React.FC = () => {
                   placeholder="Company / University"
                   value={formData.organization}
                   onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl bg-[#0a0a0c] border border-white/10 text-white placeholder-[#52525b] text-sm focus:outline-none focus:border-white transition-colors"
+                  className="w-full min-w-0 px-4 py-2.5 rounded-xl bg-[#0a0a0c] border border-white/10 text-white placeholder-[#52525b] text-sm focus:outline-none focus:border-white transition-colors"
                 />
               </div>
             </div>
 
-            <div>
+            <div className="w-full min-w-0">
               <label className="block text-xs font-mono text-[#a1a1aa] mb-1.5">
                 Message / Opportunity Details
               </label>
@@ -197,7 +197,7 @@ export const Contact: React.FC = () => {
                 placeholder="Hey Salman, let's connect regarding a software engineering role or project..."
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-4 py-2.5 rounded-xl bg-[#0a0a0c] border border-white/10 text-white placeholder-[#52525b] text-sm focus:outline-none focus:border-white transition-colors resize-none"
+                className="w-full min-w-0 max-w-full px-4 py-2.5 rounded-xl bg-[#0a0a0c] border border-white/10 text-white placeholder-[#52525b] text-sm focus:outline-none focus:border-white transition-colors resize-none"
               />
             </div>
 
@@ -229,10 +229,10 @@ export const Contact: React.FC = () => {
           <span className="text-[#a1a1aa]">GitHub Pages & Actions</span>
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-1 text-white hover:underline font-semibold"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 text-white font-semibold text-xs transition-all"
           >
             <span>Back to Top</span>
-            <ArrowUp className="w-3.5 h-3.5" />
+            <ArrowUp className="w-3.5 h-3.5 text-white" />
           </button>
         </div>
       </div>

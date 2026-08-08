@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PROJECTS, Project } from '../data/portfolioData';
 import { FolderGit2, ExternalLink, Code, CheckCircle2, ChevronRight } from 'lucide-react';
 import { GitHubIcon } from './Icons';
@@ -6,6 +6,20 @@ import { GitHubIcon } from './Icons';
 export const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [filterCategory, setFilterCategory] = useState<string>('All');
+
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.classList.add('modal-active');
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.classList.remove('modal-active');
+        document.body.style.overflow = '';
+      };
+    } else {
+      document.body.classList.remove('modal-active');
+      document.body.style.overflow = '';
+    }
+  }, [selectedProject]);
 
   const categories = ['All', 'Systems', 'DSA', 'AI', 'Web'];
 
@@ -36,7 +50,7 @@ export const Projects: React.FC = () => {
             <button
               key={cat}
               onClick={() => setFilterCategory(cat)}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all duration-200 ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-mono transition-all ${
                 filterCategory === cat
                   ? 'bg-white text-black font-bold shadow-sm'
                   : 'text-[#a1a1aa] hover:text-white hover:bg-white/5'
@@ -49,56 +63,66 @@ export const Projects: React.FC = () => {
       </div>
 
       {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredProjects.map((project) => {
+          const isFeatured = project.featured;
+
           return (
             <div
               key={project.id}
-              className="group relative rounded-2xl p-7 sm:p-8 glass-panel border border-white/10 hover:border-white/40 transition-all duration-300 flex flex-col justify-between hover:shadow-2xl hover:shadow-white/5"
+              className={`group rounded-2xl glass-panel border border-white/10 hover:border-white/30 transition-all duration-300 flex flex-col justify-between overflow-hidden relative ${
+                isFeatured ? 'md:col-span-2 lg:col-span-2 border-white/20 bg-[#161622]/60' : ''
+              }`}
             >
-              <div>
-                {/* Top Meta: Category & Metrics */}
+              {/* Top Accent Line */}
+              <div className="h-1 w-full bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+
+              <div className="p-6 sm:p-7 flex flex-col flex-1">
+                {/* Header Row: Category & Status */}
                 <div className="flex items-center justify-between gap-2 mb-4">
-                  <span className="text-[11px] font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-white/10 text-white border border-white/20">
+                  <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white font-semibold uppercase tracking-wider">
                     {project.category}
                   </span>
-
-                  {project.metrics[0] && (
-                    <span className="text-[11px] font-mono text-[#a1a1aa] bg-white/5 px-2.5 py-1 rounded-md border border-white/5">
-                      {project.metrics[0].label}: <strong className="text-white">{project.metrics[0].value}</strong>
+                  {isFeatured && (
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-widest px-2 py-0.5 rounded bg-white text-black">
+                      Featured
                     </span>
                   )}
                 </div>
 
                 {/* Title & Subtitle */}
-                <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-white transition-colors leading-snug">
+                <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-white transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-xs font-mono text-[#71717a] mt-1">
+                <p className="text-xs font-mono text-[#a1a1aa] mt-1 mb-3">
                   {project.subtitle}
                 </p>
 
                 {/* Description */}
-                <p className="text-sm text-[#a1a1aa] mt-3.5 leading-relaxed">
+                <p className="text-sm text-[#a1a1aa] mb-6 flex-1 leading-relaxed">
                   {project.description}
                 </p>
 
-                {/* Metrics Badges Row */}
-                <div className="grid grid-cols-3 gap-2 mt-6 pt-4 border-t border-white/5">
-                  {project.metrics.map((m, idx) => (
-                    <div key={idx} className="p-2.5 rounded-lg bg-white/5 border border-white/5 text-center">
-                      <div className="text-[10px] font-mono text-[#71717a] truncate">{m.label}</div>
-                      <div className="text-xs font-mono font-bold text-white mt-0.5">{m.value}</div>
+                {/* Metrics / Highlights Grid */}
+                <div className="grid grid-cols-2 gap-2 mb-6 p-3 rounded-xl bg-black/40 border border-white/5">
+                  {project.metrics.map((metric, idx) => (
+                    <div key={idx} className="flex flex-col">
+                      <span className="text-[10px] font-mono text-[#71717a] uppercase truncate">
+                        {metric.label}
+                      </span>
+                      <span className="text-xs font-mono font-bold text-white truncate">
+                        {metric.value}
+                      </span>
                     </div>
                   ))}
                 </div>
 
-                {/* Tech Pills */}
-                <div className="flex flex-wrap gap-1.5 mt-5">
+                {/* Tech Tags */}
+                <div className="flex flex-wrap gap-1.5 mb-6">
                   {project.tech.map((t) => (
                     <span
                       key={t}
-                      className="px-2.5 py-1 rounded-md bg-[#161622] text-[11px] font-mono text-[#d4d4d8] border border-white/5"
+                      className="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-[#d4d4d8] border border-white/5"
                     >
                       {t}
                     </span>
@@ -106,15 +130,15 @@ export const Projects: React.FC = () => {
                 </div>
               </div>
 
-              {/* Card Actions */}
-              <div className="flex items-center justify-between gap-3 mt-7 pt-5 border-t border-white/10">
+              {/* Card Footer Actions */}
+              <div className="px-6 py-4 border-t border-white/10 bg-white/[0.02] flex items-center justify-between gap-3">
                 <button
                   onClick={() => setSelectedProject(project)}
-                  className="flex items-center gap-1.5 text-xs font-mono text-white hover:text-white/80 transition-colors font-semibold"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 border border-white/10 text-xs font-mono text-white transition-colors font-semibold cursor-pointer"
                 >
                   <Code className="w-3.5 h-3.5 text-white" />
                   <span>Architecture & Code</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
+                  <ChevronRight className="w-3.5 h-3.5 text-white" />
                 </button>
 
                 <div className="flex items-center gap-2">
@@ -124,13 +148,12 @@ export const Projects: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-2 rounded-lg bg-white/5 hover:bg-white/15 text-white transition-all hover:scale-105"
-                      title="Live Site / Preview"
+                      title="Live Demo"
                       aria-label="View Live Project"
                     >
-                      <ExternalLink className="w-3.5 h-3.5 text-white" />
+                      <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   )}
-
                   <a
                     href={project.githubUrl}
                     target="_blank"
@@ -150,77 +173,81 @@ export const Projects: React.FC = () => {
 
       {/* Project Deep Dive Architecture Modal */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-2xl animate-in fade-in duration-200">
-          <div className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl glass-panel border border-white/25 p-6 sm:p-8 shadow-2xl shadow-black">
-            {/* Close Button */}
-            <button
-              onClick={() => setSelectedProject(null)}
-              className="absolute top-5 right-5 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white font-mono text-xs transition-all"
-              aria-label="Close Project Modal"
-            >
-              ✕
-            </button>
-
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-6 bg-black/95 backdrop-blur-2xl animate-in fade-in duration-200">
+          <div className="relative w-full max-w-3xl h-[85vh] modal-panel rounded-2xl border border-white/25 shadow-2xl shadow-black flex flex-col overflow-hidden">
             {/* Modal Header */}
-            <div className="flex items-center gap-2 mb-2">
-              <span className="text-xs font-mono px-2 py-0.5 rounded bg-white/10 text-white border border-white/20 uppercase font-semibold">
-                {selectedProject.category} System
-              </span>
-              <span className="text-xs font-mono text-[#71717a]">
-                {selectedProject.subtitle}
-              </span>
-            </div>
-
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
-              {selectedProject.title}
-            </h3>
-
-            <p className="text-sm sm:text-base text-[#d4d4d8] mt-4 leading-relaxed">
-              {selectedProject.extendedDescription}
-            </p>
-
-            {/* Key Features List */}
-            <div className="mt-6">
-              <h4 className="text-xs font-mono text-white font-bold uppercase tracking-wider mb-3">
-                Key Engineering Highlights
-              </h4>
-              <ul className="space-y-2">
-                {selectedProject.keyFeatures.map((feat, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#a1a1aa]">
-                    <CheckCircle2 className="w-4 h-4 text-white shrink-0 mt-0.5" />
-                    <span>{feat}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Architecture Notes */}
-            <div className="mt-6 p-4 rounded-xl bg-[#0a0a0c] border border-white/10">
-              <h4 className="text-xs font-mono text-white font-bold uppercase tracking-wider mb-2">
-                System Architecture & Design Decisions
-              </h4>
-              <ul className="space-y-1.5 text-xs text-[#a1a1aa] font-mono">
-                {selectedProject.architectureNotes.map((note, idx) => (
-                  <li key={idx}>&bull; {note}</li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Code Snippet Preview */}
-            {selectedProject.codeSnippet && (
-              <div className="mt-6">
-                <div className="flex items-center justify-between px-4 py-2 rounded-t-xl bg-[#161622] border-t border-x border-white/10 text-xs font-mono text-[#a1a1aa]">
-                  <span>{selectedProject.codeSnippet.filename}</span>
-                  <span className="uppercase text-white font-bold">{selectedProject.codeSnippet.language}</span>
-                </div>
-                <pre className="p-4 rounded-b-xl bg-[#0a0a0c] border border-white/10 text-xs font-mono text-[#d4d4d8] overflow-x-auto leading-relaxed">
-                  <code>{selectedProject.codeSnippet.code}</code>
-                </pre>
+            <div className="flex items-center justify-between px-6 py-4 sm:px-8 sm:py-4 border-b border-white/10 bg-[#0a0a0e] select-none shrink-0">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-mono px-2 py-0.5 rounded bg-white/10 text-white border border-white/20 uppercase font-semibold">
+                  {selectedProject.category} System
+                </span>
+                <span className="text-xs font-mono text-[#71717a] truncate max-w-[200px] sm:max-w-none">
+                  {selectedProject.subtitle}
+                </span>
               </div>
-            )}
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer shrink-0 font-mono text-xs"
+                aria-label="Close Project Modal"
+              >
+                ✕
+              </button>
+            </div>
 
-            {/* Modal Bottom Actions */}
-            <div className="flex items-center justify-between gap-4 mt-8 pt-6 border-t border-white/10">
+            {/* Scrollable Content Body */}
+            <div className="flex-1 overflow-y-auto smooth-scroll-area p-6 sm:p-8 space-y-6">
+              <div>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+                  {selectedProject.title}
+                </h3>
+                <p className="text-sm sm:text-base text-[#d4d4d8] mt-3 leading-relaxed">
+                  {selectedProject.extendedDescription}
+                </p>
+              </div>
+
+              {/* Key Features List */}
+              <div>
+                <h4 className="text-xs font-mono text-white font-bold uppercase tracking-wider mb-3">
+                  Key Engineering Highlights
+                </h4>
+                <ul className="space-y-2">
+                  {selectedProject.keyFeatures.map((feat, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#a1a1aa]">
+                      <CheckCircle2 className="w-4 h-4 text-white shrink-0 mt-0.5" />
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Architecture Notes */}
+              <div className="p-4 rounded-xl bg-[#0a0a0c] border border-white/10">
+                <h4 className="text-xs font-mono text-white font-bold uppercase tracking-wider mb-2">
+                  System Architecture & Design Decisions
+                </h4>
+                <ul className="space-y-1.5 text-xs text-[#a1a1aa] font-mono">
+                  {selectedProject.architectureNotes.map((note, idx) => (
+                    <li key={idx}>&bull; {note}</li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Code Snippet Preview */}
+              {selectedProject.codeSnippet && (
+                <div>
+                  <div className="flex items-center justify-between px-4 py-2 rounded-t-xl bg-[#161622] border-t border-x border-white/10 text-xs font-mono text-[#a1a1aa]">
+                    <span>{selectedProject.codeSnippet.filename}</span>
+                    <span className="uppercase text-white font-bold">{selectedProject.codeSnippet.language}</span>
+                  </div>
+                  <pre className="p-4 rounded-b-xl bg-[#0a0a0c] border border-white/10 text-xs font-mono text-[#d4d4d8] overflow-x-auto leading-relaxed">
+                    <code>{selectedProject.codeSnippet.code}</code>
+                  </pre>
+                </div>
+              )}
+            </div>
+
+            {/* Modal Bottom Actions Footer */}
+            <div className="shrink-0 flex items-center justify-between gap-4 px-6 py-4 sm:px-8 sm:py-4 bg-[#0a0a0e] border-t border-white/10">
               <a
                 href={selectedProject.githubUrl}
                 target="_blank"

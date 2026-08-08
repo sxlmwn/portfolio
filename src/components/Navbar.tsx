@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Terminal, Menu, X, ArrowUpRight } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { GitHubIcon, LinkedInIcon } from './Icons';
+import avatarImg from '../assets/avatar.jpg';
 
 interface NavbarProps {
   onOpenTerminal?: () => void;
@@ -45,7 +46,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
   return (
     <>
       {/* Floating Minimalist Top Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-6 sm:px-10 lg:px-16 pt-4 pb-2 transition-all duration-300 pointer-events-none">
+      <header className="site-navbar fixed top-0 left-0 right-0 z-50 flex justify-center px-6 sm:px-10 lg:px-16 pt-4 pb-2 transition-all duration-300 pointer-events-none">
         <nav
           className={`pointer-events-auto flex items-center justify-between gap-4 md:gap-8 px-4 sm:px-6 py-2.5 rounded-full transition-all duration-300 w-full ${
             scrolled
@@ -61,8 +62,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
             aria-label="Salman Younus Home"
           >
             <div className="relative w-8 h-8 rounded-lg bg-[#16161f] border border-white/10 flex items-center justify-center font-bold text-xs tracking-wider transition-all duration-300 group-hover:border-white/40 group-hover:scale-105">
-              <span className="text-white font-mono font-extrabold">SY</span>
-              <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-white ring-2 ring-[#0a0a0c]" />
+              <img
+                src={avatarImg}
+                alt="Salman Younus"
+                className="w-full h-full object-cover rounded-lg"
+              />
             </div>
             <div className="flex flex-col">
               <span className="font-bold text-xs sm:text-sm text-white tracking-tight group-hover:text-[#e4e4e7] transition-colors leading-tight">
