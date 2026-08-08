@@ -17,20 +17,17 @@ export const About: React.FC = () => {
   };
 
   return (
-    <section id="about" className="py-24 px-4 sm:px-8 lg:px-14 relative z-10 max-w-6xl mx-auto w-full">
-      {/* Subtle section glow */}
-      <div className="ambient-glow-teal top-1/2 -left-20 opacity-15" />
-
+    <section id="about" className="py-24 px-6 sm:px-10 lg:px-16 relative z-10 max-w-7xl mx-auto w-full">
       {/* Section Header */}
       <div className="mb-12 pb-6 border-b border-white/10">
-        <div className="inline-flex items-center gap-2 text-xs font-mono text-[#2dd4bf] uppercase tracking-wider mb-2">
-          <GraduationCap className="w-3.5 h-3.5" />
-          <span>Background & Self-Study Agenda</span>
+        <div className="inline-flex items-center gap-2 text-xs font-mono text-[#a1a1aa] uppercase tracking-wider mb-2">
+          <GraduationCap className="w-3.5 h-3.5 text-white" />
+          <span>Background & Study Tracks</span>
         </div>
         <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
           About & Currently Learning
         </h2>
-        <p className="text-sm sm:text-base text-[#9ca3af] mt-2 max-w-2xl">
+        <p className="text-sm sm:text-base text-[#a1a1aa] mt-2 max-w-2xl">
           Software Engineering student driven by low-level systems, high-throughput architectures, and machine intelligence.
         </p>
       </div>
@@ -39,15 +36,12 @@ export const About: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left Column: Background & Engineering Mindset (Spans 5 cols) */}
         <div className="lg:col-span-5 flex flex-col gap-6">
-          <div className="p-7 rounded-2xl glass-panel border border-white/10 relative overflow-hidden">
-            {/* Subtle dual-tone glow in corner */}
-            <div className="absolute top-0 right-0 w-36 h-36 bg-gradient-to-br from-[#2dd4bf]/20 to-[#f43f5e]/20 rounded-full blur-2xl pointer-events-none" />
-
+          <div className="p-7 sm:p-8 rounded-2xl glass-panel border border-white/10 relative overflow-hidden">
             <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
               <span>First-Principles Engineering</span>
             </h3>
 
-            <div className="space-y-4 text-sm text-[#9ca3af] leading-relaxed">
+            <div className="space-y-4 text-sm text-[#a1a1aa] leading-relaxed">
               <p>
                 I am a <strong className="text-white font-semibold">Software Engineering student</strong> obsessed with understanding how software behaves beneath high-level abstractions — from memory layouts and cache locality in C++ to the token probability distributions of large language models.
               </p>
@@ -55,19 +49,19 @@ export const About: React.FC = () => {
                 My projects reflect this focus: building high-frequency in-memory trading order books, modeling graph-theoretic simulations, and deploying local privacy-first AI pipelines without reliance on external cloud APIs.
               </p>
               <p>
-                When tackling a problem, I prioritize <span className="text-[#2dd4bf] font-semibold">relentless debugging</span>, verifiable benchmarks, and clean modular code over superficial quick fixes.
+                When tackling a problem, I prioritize <span className="text-white font-semibold">relentless debugging</span>, verifiable benchmarks, and clean modular code over superficial quick fixes.
               </p>
             </div>
 
             {/* Core Values / Focus Pillars */}
             <div className="mt-6 pt-5 border-t border-white/10 grid grid-cols-2 gap-3 text-xs font-mono">
-              <div className="p-3 rounded-lg bg-white/5 border border-white/5">
-                <div className="text-[#2dd4bf] font-bold">Low Latency</div>
-                <div className="text-[#9ca3af] mt-0.5">Microsecond C++</div>
+              <div className="p-3.5 rounded-lg bg-white/5 border border-white/5">
+                <div className="text-white font-bold">Low Latency</div>
+                <div className="text-[#a1a1aa] mt-0.5">Microsecond C++</div>
               </div>
-              <div className="p-3 rounded-lg bg-white/5 border border-white/5">
-                <div className="text-[#f43f5e] font-bold">Autonomous AI</div>
-                <div className="text-[#9ca3af] mt-0.5">Local Inference</div>
+              <div className="p-3.5 rounded-lg bg-white/5 border border-white/5">
+                <div className="text-white font-bold">Autonomous AI</div>
+                <div className="text-[#a1a1aa] mt-0.5">Local Inference</div>
               </div>
             </div>
           </div>
@@ -79,21 +73,18 @@ export const About: React.FC = () => {
           <div className="grid grid-cols-3 gap-2 p-1.5 rounded-2xl bg-[#111116] border border-white/10">
             {LEARNING_TRACKS.map((track) => {
               const isSelected = activeTrackId === track.id;
-              const isTeal = track.color === 'teal';
 
               return (
                 <button
                   key={track.id}
                   onClick={() => setActiveTrackId(track.id)}
-                  className={`flex flex-col sm:flex-row items-center justify-center gap-2 p-3 rounded-xl transition-all ${
+                  className={`flex flex-col sm:flex-row items-center justify-center gap-2 p-3 rounded-xl transition-all duration-200 ${
                     isSelected
-                      ? isTeal
-                        ? 'bg-gradient-to-r from-[#2dd4bf]/20 to-[#14b8a6]/20 text-white border border-[#2dd4bf]/40 shadow-md'
-                        : 'bg-gradient-to-r from-[#f43f5e]/20 to-[#ff5c5c]/20 text-white border border-[#f43f5e]/40 shadow-md'
-                      : 'text-[#9ca3af] hover:text-white hover:bg-white/5'
+                      ? 'bg-white text-black font-bold shadow-md'
+                      : 'text-[#a1a1aa] hover:text-white hover:bg-white/5'
                   }`}
                 >
-                  <span className={isSelected ? (isTeal ? 'text-[#2dd4bf]' : 'text-[#f43f5e]') : 'text-[#6b7280]'}>
+                  <span className={isSelected ? 'text-black' : 'text-[#71717a]'}>
                     {getIcon(track.iconName)}
                   </span>
                   <span className="text-xs font-bold tracking-tight text-center sm:text-left">
@@ -105,10 +96,10 @@ export const About: React.FC = () => {
           </div>
 
           {/* Active Track Deep Dive Panel */}
-          <div className="p-7 rounded-2xl glass-panel border border-[#2dd4bf]/30 relative overflow-hidden transition-all">
+          <div className="p-7 sm:p-8 rounded-2xl glass-panel border border-white/20 relative overflow-hidden transition-all">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-white/10">
               <div>
-                <span className="text-[11px] font-mono text-[#2dd4bf] uppercase tracking-wider">
+                <span className="text-[11px] font-mono text-white uppercase tracking-wider font-semibold">
                   Self-Study Track 0{LEARNING_TRACKS.findIndex(t => t.id === activeTrack.id) + 1}
                 </span>
                 <h3 className="text-2xl font-bold text-white mt-0.5">
@@ -116,20 +107,20 @@ export const About: React.FC = () => {
                 </h3>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-mono text-[#9ca3af]">Progress</span>
-                <span className="text-xs font-mono font-bold text-[#2dd4bf] bg-[#2dd4bf]/10 px-2.5 py-1 rounded-full border border-[#2dd4bf]/20">
+                <span className="text-xs font-mono text-[#a1a1aa]">Progress</span>
+                <span className="text-xs font-mono font-bold text-white bg-white/10 px-2.5 py-1 rounded-full border border-white/20">
                   {activeTrack.progress}%
                 </span>
               </div>
             </div>
 
-            <p className="text-sm text-[#d1d5db] mt-4 leading-relaxed">
+            <p className="text-sm text-[#d4d4d8] mt-4 leading-relaxed">
               {activeTrack.description}
             </p>
 
             {/* Core Modules Breakdown */}
             <div className="mt-6 space-y-3">
-              <h4 className="text-xs font-mono text-[#2dd4bf] uppercase tracking-wider">
+              <h4 className="text-xs font-mono text-white uppercase tracking-wider font-bold">
                 Core Competencies & Modules
               </h4>
 
@@ -145,16 +136,16 @@ export const About: React.FC = () => {
                     <span
                       className={`text-[10px] font-mono px-2 py-0.5 rounded ${
                         topic.status === 'Mastered'
-                          ? 'bg-[#2dd4bf]/15 text-[#2dd4bf] border border-[#2dd4bf]/30'
+                          ? 'bg-white/15 text-white border border-white/25'
                           : topic.status === 'In Progress'
-                          ? 'bg-[#f43f5e]/15 text-[#f43f5e] border border-[#f43f5e]/30'
-                          : 'bg-white/10 text-[#d1d5db]'
+                          ? 'bg-white/10 text-[#d4d4d8] border border-white/15'
+                          : 'bg-white/5 text-[#a1a1aa]'
                       }`}
                     >
                       {topic.status}
                     </span>
                   </div>
-                  <p className="text-xs text-[#9ca3af] leading-normal">
+                  <p className="text-xs text-[#a1a1aa] leading-normal">
                     {topic.description}
                   </p>
                 </div>
@@ -162,8 +153,8 @@ export const About: React.FC = () => {
             </div>
 
             {/* Practical Output Callout */}
-            <div className="mt-6 p-3.5 rounded-xl bg-gradient-to-r from-[#2dd4bf]/10 to-transparent border-l-2 border-[#2dd4bf] text-xs text-[#9ca3af] flex items-center gap-2">
-              <Compass className="w-4 h-4 text-[#2dd4bf] shrink-0" />
+            <div className="mt-6 p-3.5 rounded-xl bg-white/5 border-l-2 border-white text-xs text-[#a1a1aa] flex items-center gap-2">
+              <Compass className="w-4 h-4 text-white shrink-0" />
               <span>
                 <strong className="text-white font-semibold">Practical Application:</strong> {activeTrack.practicalApplication}
               </span>

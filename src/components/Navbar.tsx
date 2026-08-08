@@ -36,57 +36,56 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
 
   const navLinks = [
     { name: 'Overview', href: '#hero' },
-    { name: 'Tech Stack', href: '#stack' },
+    { name: 'Stack', href: '#stack' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Learning & Tracks', href: '#about' },
+    { name: 'Tracks', href: '#about' },
     { name: 'Contact', href: '#contact' },
   ];
 
   return (
     <>
-      {/* Floating Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 sm:px-6 pt-4 pb-2 transition-all duration-300 pointer-events-none">
+      {/* Floating Minimalist Top Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 sm:px-8 pt-4 pb-2 transition-all duration-300 pointer-events-none">
         <nav
-          className={`pointer-events-auto flex items-center justify-between gap-4 md:gap-8 px-4 sm:px-6 py-2.5 rounded-full transition-all duration-300 max-w-6xl w-full ${
+          className={`pointer-events-auto flex items-center justify-between gap-4 md:gap-8 px-5 py-2.5 rounded-full transition-all duration-300 max-w-7xl w-full ${
             scrolled
-              ? 'bg-[#111116]/85 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/60'
-              : 'bg-[#111116]/40 backdrop-blur-md border border-white/5 shadow-lg'
+              ? 'bg-[#111116]/85 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/80'
+              : 'bg-transparent border border-transparent'
           }`}
           aria-label="Main Navigation"
         >
-          {/* Logo / Monogram */}
+          {/* Logo / Monogram Mark */}
           <a
             href="#hero"
             className="flex items-center gap-2.5 group text-decoration-none"
             aria-label="Salman Younus Home"
           >
-            <div className="relative w-8 h-8 rounded-lg bg-[#16161f] border border-white/10 flex items-center justify-center font-bold text-xs tracking-wider transition-all duration-300 group-hover:border-[#2dd4bf]/50 group-hover:scale-105">
-              <span className="text-white">S</span>
-              <span className="text-[#2dd4bf]">Y</span>
-              <div className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#2dd4bf] ring-2 ring-[#0a0a0c] pulse-dot" />
+            <div className="relative w-8 h-8 rounded-lg bg-[#16161f] border border-white/10 flex items-center justify-center font-bold text-xs tracking-wider transition-all duration-300 group-hover:border-white/40 group-hover:scale-105">
+              <span className="text-white font-mono font-extrabold">SY</span>
+              <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-white ring-2 ring-[#0a0a0c]" />
             </div>
-            <div className="hidden sm:flex flex-col">
-              <span className="font-bold text-sm text-white group-hover:text-[#2dd4bf] transition-colors leading-tight">
-                {PERSONAL_INFO.name}
+            <div className="flex flex-col">
+              <span className="font-bold text-xs sm:text-sm text-white tracking-tight group-hover:text-[#e4e4e7] transition-colors leading-tight">
+                Salman Younus
               </span>
-              <span className="text-[11px] font-mono text-[#9ca3af]">
-                @{PERSONAL_INFO.handle}
+              <span className="text-[10px] font-mono text-[#71717a]">
+                Developer
               </span>
             </div>
           </a>
 
-          {/* Desktop Nav Items */}
-          <div className="hidden md:flex items-center gap-1.5 p-1 rounded-full bg-[#0a0a0c]/60 border border-white/5">
+          {/* Center/Right Nav Links */}
+          <div className="hidden md:flex items-center gap-1.5 p-1 rounded-full bg-[#111116]/60 border border-white/10 backdrop-blur-md">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.replace('#', '');
               return (
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all duration-200 ${
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all duration-200 ${
                     isActive
-                      ? 'bg-white/10 text-[#2dd4bf] border border-white/10 shadow-sm'
-                      : 'text-[#9ca3af] hover:text-white hover:bg-white/5'
+                      ? 'bg-white text-black font-bold shadow-sm'
+                      : 'text-[#a1a1aa] hover:text-white hover:bg-white/5'
                   }`}
                 >
                   {link.name}
@@ -95,13 +94,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
             })}
           </div>
 
-          {/* Right Action Icons & Status Pill */}
+          {/* Right Actions: Terminal & Let's Connect */}
           <div className="flex items-center gap-2.5">
-            {/* Terminal Trigger */}
             {onOpenTerminal && (
               <button
                 onClick={onOpenTerminal}
-                className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-[#2dd4bf] transition-all hover:scale-105 active:scale-95"
+                className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-[#a1a1aa] hover:text-white transition-all hover:scale-105 active:scale-95"
                 title="Open Interactive Terminal"
                 aria-label="Open Interactive CLI Terminal"
               >
@@ -110,33 +108,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
               </button>
             )}
 
-            {/* GitHub & LinkedIn Direct Buttons */}
             <a
               href={PERSONAL_INFO.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-[#9ca3af] hover:text-white transition-all hover:scale-105"
+              className="p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-[#a1a1aa] hover:text-white transition-all hover:scale-105"
               aria-label="GitHub Profile"
             >
               <GitHubIcon className="w-3.5 h-3.5" />
             </a>
 
             <a
-              href={PERSONAL_INFO.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden sm:flex p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-[#9ca3af] hover:text-[#2dd4bf] transition-all hover:scale-105"
-              aria-label="LinkedIn Profile"
-            >
-              <LinkedInIcon className="w-3.5 h-3.5" />
-            </a>
-
-            {/* Pill CTA Button */}
-            <a
               href="#contact"
-              className="flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-gradient-to-r from-[#2dd4bf] to-[#14b8a6] hover:from-[#38efd8] hover:to-[#2dd4bf] text-[#0a0a0c] font-bold text-xs tracking-tight transition-all duration-200 shadow-md shadow-[#2dd4bf]/20 hover:scale-105 active:scale-95"
+              className="flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-white hover:bg-[#e4e4e7] text-black font-bold text-xs tracking-tight transition-all duration-200 shadow-md hover:scale-105 active:scale-95"
             >
-              <span>Let's Connect</span>
+              <span>Connect</span>
               <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
             </a>
 
@@ -154,9 +140,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-[#0a0a0c]/95 backdrop-blur-2xl flex flex-col pt-24 px-6 pb-8 md:hidden animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-40 bg-[#0a0a0c]/98 backdrop-blur-2xl flex flex-col pt-24 px-6 pb-8 md:hidden animate-in fade-in duration-200">
           <div className="flex flex-col gap-3">
-            <span className="text-xs font-mono text-[#6b7280] uppercase tracking-wider mb-2">
+            <span className="text-xs font-mono text-[#71717a] uppercase tracking-wider mb-2">
               Navigation
             </span>
             {navLinks.map((link) => (
@@ -164,15 +150,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between p-3.5 rounded-xl bg-white/5 border border-white/10 text-base font-bold text-white hover:border-[#2dd4bf]/40 hover:text-[#2dd4bf] transition-all"
+                className="flex items-center justify-between p-3.5 rounded-xl bg-white/5 border border-white/10 text-base font-bold text-white hover:border-white/30 transition-all"
               >
                 <span>{link.name}</span>
-                <ArrowUpRight className="w-4 h-4 text-[#9ca3af]" />
+                <ArrowUpRight className="w-4 h-4 text-[#a1a1aa]" />
               </a>
             ))}
 
             <div className="mt-4 pt-4 border-t border-white/10 flex flex-col gap-3">
-              <span className="text-xs font-mono text-[#6b7280] uppercase tracking-wider">
+              <span className="text-xs font-mono text-[#71717a] uppercase tracking-wider">
                 Direct Channels
               </span>
               <div className="grid grid-cols-2 gap-2.5">
@@ -182,7 +168,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 p-3 rounded-xl bg-white/5 border border-white/10 text-sm font-semibold text-white"
                 >
-                  <GitHubIcon className="w-4 h-4 text-[#2dd4bf]" />
+                  <GitHubIcon className="w-4 h-4" />
                   <span>GitHub</span>
                 </a>
                 <a
@@ -191,7 +177,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 p-3 rounded-xl bg-white/5 border border-white/10 text-sm font-semibold text-white"
                 >
-                  <LinkedInIcon className="w-4 h-4 text-[#2dd4bf]" />
+                  <LinkedInIcon className="w-4 h-4" />
                   <span>LinkedIn</span>
                 </a>
               </div>
@@ -202,7 +188,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
                     setMobileMenuOpen(false);
                     onOpenTerminal();
                   }}
-                  className="flex items-center justify-center gap-2 p-3.5 rounded-xl bg-[#161622] border border-[#2dd4bf]/30 text-sm font-mono text-[#2dd4bf] font-bold"
+                  className="flex items-center justify-center gap-2 p-3.5 rounded-xl bg-[#161622] border border-white/20 text-sm font-mono text-white font-bold"
                 >
                   <Terminal className="w-4 h-4" />
                   <span>Launch CLI Terminal</span>

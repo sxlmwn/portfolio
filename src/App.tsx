@@ -24,13 +24,13 @@ export const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0c] text-[#f3f4f6] relative selection:bg-[#2dd4bf]/30 selection:text-[#2dd4bf]">
-      {/* Noise grain overlay for editorial texture */}
+    <div className="min-h-screen bg-[#0a0a0c] text-[#f3f4f6] relative selection:bg-white selection:text-black">
+      {/* Noise grain overlay for subtle editorial luxury texture */}
       <div className="noise-overlay" />
 
-      {/* Top Thin Scroll Progress Bar */}
+      {/* Top Thin Monochrome Scroll Progress Bar */}
       <div
-        className="fixed top-0 left-0 h-[2.5px] bg-gradient-to-r from-[#2dd4bf] via-[#14b8a6] to-[#f43f5e] z-50 transition-all duration-150 ease-out"
+        className="fixed top-0 left-0 h-[2px] bg-gradient-to-r from-white via-[#d4d4d8] to-[#71717a] z-50 transition-all duration-150 ease-out"
         style={{ width: `${scrollPercentage}%` }}
       />
 
@@ -39,7 +39,7 @@ export const App: React.FC = () => {
 
       {/* Main Content Sections */}
       <main className="relative z-10">
-        {/* 1. Hero Section (Folioblox editorial layout with static dual-tone photo) */}
+        {/* 1. Hero Section (Alex Graham / Folioblox B&W high-fashion editorial layout) */}
         <Hero onOpenTerminal={() => setTerminalOpen(true)} />
 
         {/* 2. Tech Stack Strip */}

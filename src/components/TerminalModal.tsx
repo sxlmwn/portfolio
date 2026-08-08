@@ -11,7 +11,7 @@ export const TerminalModal: React.FC<TerminalModalProps> = ({ isOpen, onClose })
   const [history, setHistory] = useState<Array<{ command: string; output: string }>>([
     {
       command: 'welcome',
-      output: `Salman Younus (sxlmwn) - Interactive Systems Shell v2.4.0\nType "help" to view available system commands or "run altradar" to simulate the C++ matching engine.`,
+      output: `Salman Younus (sxlmwn) - Interactive Systems Shell v2.5.0\nType "help" to view available system commands or "run altradar" to simulate the C++ matching engine.`,
     },
   ]);
   const [input, setInput] = useState('');
@@ -69,23 +69,23 @@ export const TerminalModal: React.FC<TerminalModalProps> = ({ isOpen, onClose })
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-xl animate-in fade-in duration-200">
-      <div className="relative w-full max-w-3xl h-[600px] max-h-[85vh] rounded-2xl bg-[#0a0a0e] border border-[#2dd4bf]/40 shadow-2xl flex flex-col overflow-hidden font-mono text-xs">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-2xl animate-in fade-in duration-200">
+      <div className="relative w-full max-w-3xl h-[600px] max-h-[85vh] rounded-2xl bg-[#0a0a0e] border border-white/25 shadow-2xl flex flex-col overflow-hidden font-mono text-xs">
         {/* Terminal Titlebar */}
         <div className="flex items-center justify-between px-4 py-3 bg-[#111116] border-b border-white/10 select-none">
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-[#f43f5e] cursor-pointer" onClick={onClose} />
-            <div className="w-3 h-3 rounded-full bg-[#eab308]" />
-            <div className="w-3 h-3 rounded-full bg-[#2dd4bf]" />
-            <span className="text-[11px] text-[#9ca3af] ml-2 flex items-center gap-1.5 font-bold">
-              <TerminalIcon className="w-3.5 h-3.5 text-[#2dd4bf]" />
+            <div className="w-3 h-3 rounded-full bg-white/20 cursor-pointer hover:bg-white/40 transition-colors" onClick={onClose} />
+            <div className="w-3 h-3 rounded-full bg-white/20" />
+            <div className="w-3 h-3 rounded-full bg-white/20" />
+            <span className="text-[11px] text-[#a1a1aa] ml-2 flex items-center gap-1.5 font-bold">
+              <TerminalIcon className="w-3.5 h-3.5 text-white" />
               sxlmwn@workstation: ~/portfolio-v2
             </span>
           </div>
 
           <button
             onClick={onClose}
-            className="p-1 rounded hover:bg-white/10 text-[#9ca3af] hover:text-white"
+            className="p-1 rounded hover:bg-white/10 text-[#a1a1aa] hover:text-white"
             aria-label="Close Terminal"
           >
             <X className="w-4 h-4" />
@@ -93,17 +93,17 @@ export const TerminalModal: React.FC<TerminalModalProps> = ({ isOpen, onClose })
         </div>
 
         {/* Terminal Body */}
-        <div className="flex-1 p-4 overflow-y-auto space-y-3 leading-relaxed text-[#d1d5db]">
+        <div className="flex-1 p-4 overflow-y-auto space-y-3 leading-relaxed text-[#d4d4d8]">
           {history.map((item, idx) => (
             <div key={idx} className="space-y-1">
               {item.command && (
-                <div className="flex items-center gap-2 text-[#2dd4bf]">
-                  <span className="text-[#f43f5e]">➜</span>
+                <div className="flex items-center gap-2 text-white">
+                  <span className="text-[#71717a]">➜</span>
                   <span className="text-white font-bold">{item.command}</span>
                 </div>
               )}
               {item.output && (
-                <pre className="whitespace-pre-wrap font-mono text-[#9ca3af] text-xs pl-4 border-l border-white/10">
+                <pre className="whitespace-pre-wrap font-mono text-[#a1a1aa] text-xs pl-4 border-l border-white/10">
                   {item.output}
                 </pre>
               )}
@@ -111,7 +111,7 @@ export const TerminalModal: React.FC<TerminalModalProps> = ({ isOpen, onClose })
           ))}
 
           {isSimulating && (
-            <div className="flex items-center gap-2 text-[#2dd4bf] pl-4 animate-pulse">
+            <div className="flex items-center gap-2 text-white pl-4 animate-pulse">
               <span>Calculating order book depth & slippage...</span>
             </div>
           )}
@@ -121,15 +121,15 @@ export const TerminalModal: React.FC<TerminalModalProps> = ({ isOpen, onClose })
 
         {/* Terminal Input Bar */}
         <form onSubmit={handleCommand} className="flex items-center gap-2 p-3 bg-[#111116] border-t border-white/10">
-          <span className="text-[#f43f5e] font-bold">➜</span>
-          <span className="text-[#2dd4bf] font-bold">sxlmwn $</span>
+          <span className="text-[#71717a] font-bold">➜</span>
+          <span className="text-white font-bold">sxlmwn $</span>
           <input
             ref={inputRef}
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="type 'help', 'skills', 'projects', 'run altradar'..."
-            className="flex-1 bg-transparent text-white focus:outline-none placeholder-[#4b5563]"
+            className="flex-1 bg-transparent text-white focus:outline-none placeholder-[#52525b]"
           />
         </form>
       </div>

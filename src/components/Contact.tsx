@@ -33,12 +33,12 @@ export const Contact: React.FC = () => {
     navigator.clipboard.writeText(PERSONAL_INFO.email);
     setCopied(true);
     
-    // Confetti celebration
+    // Monochrome silver confetti celebration
     confetti({
       particleCount: 50,
       spread: 60,
       origin: { y: 0.8 },
-      colors: ['#2dd4bf', '#f43f5e', '#ffffff'],
+      colors: ['#ffffff', '#a1a1aa', '#71717a', '#27272a'],
     });
 
     setTimeout(() => setCopied(false), 2500);
@@ -55,10 +55,10 @@ export const Contact: React.FC = () => {
 
     setFormSent(true);
     confetti({
-      particleCount: 75,
+      particleCount: 70,
       spread: 70,
       origin: { y: 0.7 },
-      colors: ['#2dd4bf', '#f43f5e'],
+      colors: ['#ffffff', '#d4d4d8', '#a1a1aa'],
     });
   };
 
@@ -67,17 +67,17 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <footer id="contact" className="pt-24 pb-12 px-4 sm:px-8 lg:px-14 relative z-10 max-w-6xl mx-auto w-full">
+    <footer id="contact" className="pt-24 pb-12 px-6 sm:px-10 lg:px-16 relative z-10 max-w-7xl mx-auto w-full">
       {/* Section Header */}
       <div className="mb-12 pb-6 border-b border-white/10">
-        <div className="inline-flex items-center gap-2 text-xs font-mono text-[#2dd4bf] uppercase tracking-wider mb-2">
-          <Mail className="w-3.5 h-3.5" />
+        <div className="inline-flex items-center gap-2 text-xs font-mono text-[#a1a1aa] uppercase tracking-wider mb-2">
+          <Mail className="w-3.5 h-3.5 text-white" />
           <span>Get in Touch & Collaborate</span>
         </div>
         <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
           Let's Build Something Great.
         </h2>
-        <p className="text-sm sm:text-base text-[#9ca3af] mt-2 max-w-2xl">
+        <p className="text-sm sm:text-base text-[#a1a1aa] mt-2 max-w-2xl">
           Whether you're looking for an engineering intern, discussing low-latency C++, or exploring local AI agents, my inbox is open.
         </p>
       </div>
@@ -87,25 +87,25 @@ export const Contact: React.FC = () => {
         {/* Left Column: Direct Links & Info */}
         <div className="lg:col-span-5 flex flex-col gap-4">
           {/* Email Quick Copy Card */}
-          <div className="p-6 rounded-2xl glass-panel border border-[#2dd4bf]/30 relative overflow-hidden group">
+          <div className="p-6 rounded-2xl glass-panel border border-white/20 relative overflow-hidden group">
             <div className="flex items-center justify-between gap-3 mb-2">
-              <span className="text-xs font-mono text-[#2dd4bf] uppercase tracking-wider">
+              <span className="text-xs font-mono text-[#a1a1aa] uppercase tracking-wider">
                 Direct Email
               </span>
               <button
                 onClick={handleCopyEmail}
-                className="flex items-center gap-1 px-2.5 py-1 rounded-md bg-white/10 hover:bg-white/20 text-xs font-mono text-white transition-all"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-white/10 hover:bg-white/20 text-xs font-mono text-white transition-all duration-200"
                 title="Copy Email Address"
                 aria-label="Copy Email Address"
               >
                 {copied ? (
                   <>
-                    <Check className="w-3 h-3 text-[#2dd4bf]" />
-                    <span className="text-[#2dd4bf]">Copied!</span>
+                    <Check className="w-3 h-3 text-white" />
+                    <span className="text-white font-bold">Copied!</span>
                   </>
                 ) : (
                   <>
-                    <Copy className="w-3 h-3" />
+                    <Copy className="w-3 h-3 text-[#a1a1aa]" />
                     <span>Copy</span>
                   </>
                 )}
@@ -114,13 +114,13 @@ export const Contact: React.FC = () => {
 
             <a
               href={`mailto:${PERSONAL_INFO.email}`}
-              className="text-lg sm:text-xl font-bold text-white hover:text-[#2dd4bf] transition-colors break-all"
+              className="text-lg sm:text-xl font-bold text-white hover:text-[#d4d4d8] transition-colors break-all"
             >
               {PERSONAL_INFO.email}
             </a>
 
-            <p className="text-xs text-[#9ca3af] mt-2">
-              Fastest response time for opportunities and discussions.
+            <p className="text-xs text-[#a1a1aa] mt-2">
+              Fastest response time for opportunities and engineering discussions.
             </p>
           </div>
 
@@ -134,12 +134,12 @@ export const Contact: React.FC = () => {
               className="p-5 rounded-2xl glass-panel border border-white/10 hover:border-white/30 transition-all group flex flex-col justify-between"
             >
               <div className="flex items-center justify-between">
-                <GitHubIcon className="w-5 h-5 text-white group-hover:text-[#2dd4bf] transition-colors" />
-                <span className="text-[10px] font-mono text-[#6b7280]">@sxlmwn</span>
+                <GitHubIcon className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
+                <span className="text-[10px] font-mono text-[#71717a]">@sxlmwn</span>
               </div>
               <div className="mt-4">
                 <div className="text-sm font-bold text-white">GitHub</div>
-                <div className="text-xs text-[#9ca3af]">Repositories & Code</div>
+                <div className="text-xs text-[#a1a1aa]">Repositories & Code</div>
               </div>
             </a>
 
@@ -148,27 +148,27 @@ export const Contact: React.FC = () => {
               href={PERSONAL_INFO.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-5 rounded-2xl glass-panel border border-white/10 hover:border-[#2dd4bf]/40 transition-all group flex flex-col justify-between"
+              className="p-5 rounded-2xl glass-panel border border-white/10 hover:border-white/30 transition-all group flex flex-col justify-between"
             >
               <div className="flex items-center justify-between">
-                <LinkedInIcon className="w-5 h-5 text-white group-hover:text-[#2dd4bf] transition-colors" />
-                <span className="text-[10px] font-mono text-[#6b7280]">/in/sxlmwn</span>
+                <LinkedInIcon className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
+                <span className="text-[10px] font-mono text-[#71717a]">/in/sxlmwn</span>
               </div>
               <div className="mt-4">
                 <div className="text-sm font-bold text-white">LinkedIn</div>
-                <div className="text-xs text-[#9ca3af]">Professional Network</div>
+                <div className="text-xs text-[#a1a1aa]">Professional Network</div>
               </div>
             </a>
           </div>
 
           {/* Location & Time Indicator */}
-          <div className="p-4 rounded-xl glass-panel-subtle border border-white/5 flex items-center justify-between text-xs font-mono text-[#9ca3af]">
+          <div className="p-4 rounded-xl glass-panel-subtle border border-white/5 flex items-center justify-between text-xs font-mono text-[#a1a1aa]">
             <div className="flex items-center gap-2">
-              <MapPin className="w-3.5 h-3.5 text-[#f43f5e]" />
+              <MapPin className="w-3.5 h-3.5 text-white" />
               <span>Karachi, PK (UTC+5)</span>
             </div>
             <div className="flex items-center gap-1.5 text-white">
-              <Clock className="w-3.5 h-3.5 text-[#2dd4bf]" />
+              <Clock className="w-3.5 h-3.5 text-white" />
               <span>{timeString || 'Loading...'}</span>
             </div>
           </div>
@@ -178,7 +178,7 @@ export const Contact: React.FC = () => {
         <div className="lg:col-span-7">
           <form
             onSubmit={handleSubmit}
-            className="p-7 rounded-2xl glass-panel border border-white/10 flex flex-col gap-4 relative"
+            className="p-7 sm:p-8 rounded-2xl glass-panel border border-white/10 flex flex-col gap-4 relative"
           >
             <h3 className="text-lg font-bold text-white">
               Send a Direct Note
@@ -186,7 +186,7 @@ export const Contact: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-mono text-[#9ca3af] mb-1.5">
+                <label className="block text-xs font-mono text-[#a1a1aa] mb-1.5">
                   Your Name
                 </label>
                 <input
@@ -195,12 +195,12 @@ export const Contact: React.FC = () => {
                   placeholder="Ada Lovelace"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl bg-[#0a0a0c] border border-white/10 text-white placeholder-[#4b5563] text-sm focus:outline-none focus:border-[#2dd4bf] transition-colors"
+                  className="w-full px-4 py-2.5 rounded-xl bg-[#0a0a0c] border border-white/10 text-white placeholder-[#52525b] text-sm focus:outline-none focus:border-white transition-colors"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-mono text-[#9ca3af] mb-1.5">
+                <label className="block text-xs font-mono text-[#a1a1aa] mb-1.5">
                   Your Email
                 </label>
                 <input
@@ -209,13 +209,13 @@ export const Contact: React.FC = () => {
                   placeholder="ada@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl bg-[#0a0a0c] border border-white/10 text-white placeholder-[#4b5563] text-sm focus:outline-none focus:border-[#2dd4bf] transition-colors"
+                  className="w-full px-4 py-2.5 rounded-xl bg-[#0a0a0c] border border-white/10 text-white placeholder-[#52525b] text-sm focus:outline-none focus:border-white transition-colors"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-mono text-[#9ca3af] mb-1.5">
+              <label className="block text-xs font-mono text-[#a1a1aa] mb-1.5">
                 Message / Opportunity Details
               </label>
               <textarea
@@ -224,20 +224,20 @@ export const Contact: React.FC = () => {
                 placeholder="Hey Salman, let's discuss an engineering project or role..."
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-4 py-2.5 rounded-xl bg-[#0a0a0c] border border-white/10 text-white placeholder-[#4b5563] text-sm focus:outline-none focus:border-[#2dd4bf] transition-colors resize-none"
+                className="w-full px-4 py-2.5 rounded-xl bg-[#0a0a0c] border border-white/10 text-white placeholder-[#52525b] text-sm focus:outline-none focus:border-white transition-colors resize-none"
               />
             </div>
 
             <button
               type="submit"
-              className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#2dd4bf] to-[#14b8a6] hover:from-[#38efd8] hover:to-[#2dd4bf] text-[#0a0a0c] font-bold text-sm shadow-md shadow-[#2dd4bf]/20 transition-all hover:scale-[1.02] active:scale-95"
+              className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white hover:bg-[#e4e4e7] text-black font-bold text-sm shadow-lg transition-all hover:scale-[1.02] active:scale-95"
             >
               <span>Transmit Note</span>
               <Send className="w-4 h-4" />
             </button>
 
             {formSent && (
-              <div className="p-3 rounded-xl bg-[#2dd4bf]/10 border border-[#2dd4bf]/30 text-xs font-mono text-[#2dd4bf] text-center animate-in fade-in">
+              <div className="p-3 rounded-xl bg-white/10 border border-white/20 text-xs font-mono text-white text-center animate-in fade-in">
                 ✓ Message prepared in your mail client. Looking forward to speaking!
               </div>
             )}
@@ -246,16 +246,16 @@ export const Contact: React.FC = () => {
       </div>
 
       {/* Bottom Footer Bar */}
-      <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#6b7280]">
+      <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#71717a]">
         <div>
           &copy; {new Date().getFullYear()} Salman Younus ({PERSONAL_INFO.handle}). All Systems Nominal.
         </div>
 
         <div className="flex items-center gap-4">
-          <span className="text-[#9ca3af]">GitHub Pages & Actions</span>
+          <span className="text-[#a1a1aa]">GitHub Pages & Actions</span>
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-1 text-[#2dd4bf] hover:underline"
+            className="flex items-center gap-1 text-white hover:underline font-semibold"
           >
             <span>Back to Top</span>
             <ArrowUp className="w-3.5 h-3.5" />
