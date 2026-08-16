@@ -169,6 +169,7 @@ section, footer, header, main {
   right: 0;
   width: 60%;
   height: 100%;
+  opacity: 0.65;
   object-fit: cover;
   object-position: center 15%;
   z-index: 1;
@@ -187,10 +188,26 @@ section, footer, header, main {
 @media (max-width: 1024px) {
   .hero-bg-portrait {
     width: 100%;
-    opacity: 0.35;
-    object-position: center top;
-    mask-image: linear-gradient(to bottom, black 40%, transparent 95%);
-    -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 95%);
+    height: 100%;
+    opacity: 0.65;
+    object-position: 32% 16%;
+    filter: contrast(1.06) brightness(1.05) grayscale(100%);
+    mask-image: linear-gradient(to bottom, black 45%, transparent 95%);
+    -webkit-mask-image: linear-gradient(to bottom, black 45%, transparent 95%);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-bg-portrait {
+    object-position: 35% 14%;
+  }
+
+  .hero-stagger-title {
+    font-size: clamp(2.5rem, 8.5vw, 4rem);
+  }
+
+  .hero-stagger-row2 {
+    padding-left: clamp(1.25rem, 5vw, 3rem);
   }
 }
 
@@ -271,6 +288,7 @@ section, footer, header, main {
    ========================================================================== */
 
 .min-h-screen { min-height: 100vh; }
+.min-h-0 { min-height: 0; }
 .w-full { width: 100%; }
 .h-full { height: 100%; }
 .h-\[85vh\] { height: 85vh; }
@@ -303,6 +321,10 @@ section, footer, header, main {
 .max-w-sm { max-width: 24rem; }
 .mx-auto { margin-left: auto; margin-right: auto; }
 .my-auto { margin-top: auto; margin-bottom: auto; }
+.mt-auto { margin-top: auto; }
+.mb-auto { margin-bottom: auto; }
+.ml-auto { margin-left: auto; }
+.mr-auto { margin-right: auto; }
 
 .relative { position: relative; }
 .fixed { position: fixed; }
@@ -409,6 +431,8 @@ section, footer, header, main {
 .max-h-\[85vh\] { max-height: 85vh; }
 .max-h-\[calc\(100vh-7rem\)\] { max-height: calc(100vh - 7rem); }
 
+.pb-0 { padding-bottom: 0px; }
+.pb-1 { padding-bottom: 0.25rem; }
 .pb-2 { padding-bottom: 0.5rem; }
 .pb-3 { padding-bottom: 0.75rem; }
 .pb-4 { padding-bottom: 1rem; }
@@ -584,6 +608,7 @@ section, footer, header, main {
 .duration-1000 { transition-duration: 1000ms; }
 
 .opacity-0 { opacity: 0; }
+.opacity-65 { opacity: 0.65; }
 .opacity-90 { opacity: 0.9; }
 .opacity-100 { opacity: 1; }
 

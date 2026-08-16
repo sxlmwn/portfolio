@@ -20,7 +20,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
         src="/hero-bw.webp"
         alt="Salman Younus — Editorial Portrait"
         className={`hero-bg-portrait transition-opacity duration-1000 ${
-          imgLoaded ? 'opacity-90' : 'opacity-0'
+          imgLoaded ? 'opacity-65' : 'opacity-0'
         }`}
         onLoad={() => setImgLoaded(true)}
       />
@@ -43,56 +43,54 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
         </div>
       </div>
 
-      {/* Center Staggered Editorial Typography (Full-Bleed Left Alignment) */}
-      <div className="relative z-10 w-full my-auto py-10 sm:py-16">
+      {/* Fills space between top row and bottom row: heading pinned to top, text+buttons pinned to bottom */}
+      <div className="relative z-10 w-full flex-1 min-h-0 flex flex-col justify-between pt-2 sm:pt-6 pb-0 sm:pb-4">
         <div className="max-w-4xl">
-          {/* Staggered Heading: "Salman" then cascading "Younus" */}
           <h1 className="hero-stagger-title">
             <span className="hero-stagger-row1">Salman</span>
             <span className="hero-stagger-row2">Younus</span>
           </h1>
+        </div>
 
-          {/* Subtext & Short Manifesto */}
-          <div className="mt-8 sm:mt-10 max-w-xl">
-            <p className="text-base sm:text-xl text-[#d4d4d8] font-normal leading-relaxed">
-              Software Engineering student building high-throughput <strong className="text-white font-semibold">C++ engines</strong>, autonomous <strong className="text-white font-semibold">local AI pipelines</strong>, and resilient distributed systems.
-            </p>
+        <div className="mt-auto max-w-xl pb-1">
+          <p className="text-sm sm:text-lg text-[#d4d4d8] font-normal leading-relaxed">
+            Software Engineering student building high-throughput <strong className="text-white font-semibold">C++ engines</strong>, autonomous <strong className="text-white font-semibold">local AI pipelines</strong>, and resilient distributed systems.
+          </p>
 
-            {/* Pill Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3.5 mt-7">
-              <a
-                href="#projects"
-                className="flex items-center gap-2 px-6 py-3.5 rounded-full bg-white text-black font-bold text-xs tracking-tight transition-all duration-300 hover:bg-[#e4e4e7] hover:scale-105 active:scale-95 shadow-xl shadow-white/5"
+          {/* Pill Action Buttons */}
+          <div className="hidden sm:flex flex-wrap items-center gap-3.5 mt-7">
+            <a
+              href="#projects"
+              className="flex items-center gap-2 px-6 py-3.5 rounded-full bg-white text-black font-bold text-xs tracking-tight transition-all duration-300 hover:bg-[#e4e4e7] hover:scale-105 active:scale-95 shadow-xl shadow-white/5"
+            >
+              <span>Explore Work</span>
+              <ArrowDown className="w-3.5 h-3.5 stroke-[2.5]" />
+            </a>
+
+            <a
+              href="#contact"
+              className="flex items-center gap-2 px-6 py-3.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 hover:border-white/30 text-white font-semibold text-xs tracking-tight transition-all duration-300 hover:scale-105 active:scale-95 backdrop-blur-md"
+            >
+              <span>Get in Touch</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#a1a1aa]" />
+            </a>
+
+            {onOpenTerminal && (
+              <button
+                onClick={onOpenTerminal}
+                className="flex items-center gap-2 px-4 py-3.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-[#a1a1aa] hover:text-white transition-all duration-300 hover:scale-105 active:scale-95"
+                title="Interactive Terminal Shell"
               >
-                <span>Explore Work</span>
-                <ArrowDown className="w-3.5 h-3.5 stroke-[2.5]" />
-              </a>
-
-              <a
-                href="#contact"
-                className="flex items-center gap-2 px-6 py-3.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 hover:border-white/30 text-white font-semibold text-xs tracking-tight transition-all duration-300 hover:scale-105 active:scale-95 backdrop-blur-md"
-              >
-                <span>Get in Touch</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-[#a1a1aa]" />
-              </a>
-
-              {onOpenTerminal && (
-                <button
-                  onClick={onOpenTerminal}
-                  className="flex items-center gap-2 px-4 py-3.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-[#a1a1aa] hover:text-white transition-all duration-300 hover:scale-105 active:scale-95"
-                  title="Interactive Terminal Shell"
-                >
-                  <Terminal className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">CLI Shell</span>
-                </button>
-              )}
-            </div>
+                <Terminal className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">CLI Shell</span>
+              </button>
+            )}
           </div>
         </div>
       </div>
 
       {/* Bottom Row: Role Tag & Social Icons in Bottom Corner */}
-      <div className="relative z-10 w-full pt-6 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="relative z-10 w-full pt-4 sm:pt-6 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         {/* Bottom-Left Role Tag */}
         <div className="flex items-center gap-3 text-xs font-mono text-[#a1a1aa]">
           <span className="text-white font-bold tracking-wider">// Software Engineering Student</span>
